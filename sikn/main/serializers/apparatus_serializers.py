@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from ..models import Apparatus, Status
+from .device_serializers import DeviceSerializer
+from .sensor_serializers import SensorSerializer
 
 
 class ApparatusesListSerializer(serializers.ModelSerializer):
@@ -21,7 +23,7 @@ class StatusSerializer(serializers.ModelSerializer):
 class ApparatusSerializer(serializers.ModelSerializer):
     apparatus = serializers.CharField(source='name')
     status = StatusSerializer()
-
     class Meta:
         model = Apparatus
         exclude = ['name']
+

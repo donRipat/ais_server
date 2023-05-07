@@ -22,6 +22,7 @@ register_converter(FloatUrlParameterConverter, 'float')
 
 urlpatterns = [
    path('apparatuses', GetApparatusesListAPIView.as_view()),
+   path('apparatus/<int:_a>', GetApparatusAPIView.as_view()),
    path('apparatus/<int:_a>/status/<int:_s>/', SetApparatusStatusAPIView.as_view()),
    path('devices/<int:_a>', GetDevicesListAPIView.as_view()),
    path('sensors/<int:_d>', GetSensorsListAPIView.as_view()),

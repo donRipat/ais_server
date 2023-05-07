@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from ..serializers.apparatus_serializers import ApparatusesListSerializer
+from ..serializers.apparatus_serializers import *
 from ..services.apparatus_service import ApparatusService
 
 
@@ -16,7 +16,17 @@ class GetApparatusesListAPIView(GenericAPIView):
     def get(self, request: Request) -> Response:
         """Getting apparatuses list"""
         response = ApparatusService.get_apparatuses_list()
-        print(response)
+        return Response(data=response.data, status=status.HTTP_200_OK)
+
+
+class GetApparatusAPIView(GenericAPIView):
+    # permission_classes = [IsAuthenticated]
+    serializer_class = ApparatusesListSerializer
+
+    def get(self, request: Request, _a: int) -> Response:
+        """Getting apparatuses list"""
+        response = ApparatusService.get_apparatus(_a)
+        print('API RESPONSE:', response)
         return Response(data=response.data, status=status.HTTP_200_OK)
 
 

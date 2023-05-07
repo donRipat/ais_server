@@ -57,9 +57,10 @@ class ApparatusService:
         p.save()
 
     @staticmethod
-    def get_apparatus(_id: int) -> Optional[Apparatus]:
+    def get_apparatus(_id: int) -> ApparatusSerializer:
         p = Apparatus.objects.filter(id=_id)
-        return p
+        response = ApparatusSerializer(p, many=True)
+        return response
 
     @staticmethod
     def get_apparatuses_list() -> ApparatusesListSerializer:
