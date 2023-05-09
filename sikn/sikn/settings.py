@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&-vb^-u)190@c#zcx03ks%!g*hmrb!w+%@*#9j3t26vfn=h1t3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
  'http://localhost:3000',
@@ -98,7 +98,7 @@ DATABASES = {
         'NAME': 'sikn',
         'USER': 'usr',
         'PASSWORD': 'Qwerty@',
-        'HOST': '192.168.56.104',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
