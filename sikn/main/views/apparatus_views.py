@@ -11,7 +11,7 @@ from ..services.apparatus_service import ApparatusService
 
 class GetApparatusesListAPIView(GenericAPIView):
     # permission_classes = [IsAuthenticated]
-    serializer_class = ApparatusesListSerializer
+    serializer_class = ApparatusSerializer
 
     def get(self, request: Request) -> Response:
         """Getting apparatuses list"""
@@ -21,7 +21,7 @@ class GetApparatusesListAPIView(GenericAPIView):
 
 class GetApparatusAPIView(GenericAPIView):
     # permission_classes = [IsAuthenticated]
-    serializer_class = ApparatusesListSerializer
+    serializer_class = ApparatusSerializer
 
     def get(self, request: Request, _a: int) -> Response:
         """Getting apparatuses list"""
@@ -32,7 +32,7 @@ class GetApparatusAPIView(GenericAPIView):
 
 class SetApparatusStatusAPIView(GenericAPIView):
     # permission_classes = [IsAuthenticated]
-    serializer_class = ApparatusesListSerializer
+    serializer_class = ApparatusSerializer
 
     def get(self, request: Request, _a: int, _s: int) -> Response:
         """Updating apparatus' status"""

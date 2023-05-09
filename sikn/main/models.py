@@ -42,7 +42,7 @@ class DeviceName(models.Model):
 
 class Device(models.Model):
     name = models.ForeignKey(DeviceName, on_delete=models.PROTECT)
-    apparatus = models.ForeignKey(Apparatus, on_delete=models.PROTECT)
+    apparatus = models.ForeignKey(Apparatus, related_name="devices", on_delete=models.PROTECT)
 
     def __str__(self):
         return str({"Device": self.name,
@@ -51,7 +51,7 @@ class Device(models.Model):
 
 class Sensor(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, related_name="sensors", on_delete=models.CASCADE)
     parameter = models.CharField(max_length=100, unique=True)
     lower = models.DecimalField(max_digits=10, decimal_places=5)
     upper = models.DecimalField(max_digits=10, decimal_places=5)

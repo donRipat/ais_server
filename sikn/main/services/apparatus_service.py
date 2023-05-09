@@ -58,14 +58,14 @@ class ApparatusService:
 
     @staticmethod
     def get_apparatus(_id: int) -> ApparatusSerializer:
-        p = Apparatus.objects.filter(id=_id)
-        response = ApparatusSerializer(p, many=True)
+        p = Apparatus.objects.filter(id=_id)[0]
+        response = ApparatusSerializer(p, many=False)
         return response
 
     @staticmethod
-    def get_apparatuses_list() -> ApparatusesListSerializer:
-        apparatuses_list = Apparatus.objects.all().order_by('status')
-        response = ApparatusesListSerializer(apparatuses_list, many=True)
+    def get_apparatuses_list() -> ApparatusSerializer:
+        apparatuses_list = Apparatus.objects.all().order_by('-status_id')
+        response = ApparatusSerializer(apparatuses_list, many=True)
         return response
 
     @staticmethod
@@ -77,7 +77,7 @@ class ApparatusService:
         a = Apparatus.objects.filter(id=_a)
         new_status = StatusService.get_status(_s)
         a.update(status=new_status)
-        response = ApparatusSerializer(a, many=True)
+        response = ApparatusSerializer(a[0])
         return response
 
     @staticmethod

@@ -3,3 +3,4 @@ djangorestframework
 mysqlclient
 drf-yasg
 gunicorn
+django-cors-headers
